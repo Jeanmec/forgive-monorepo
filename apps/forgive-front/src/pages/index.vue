@@ -1,3 +1,3 @@
 <template>
-  <NxWelcome title="forgive-front" />
+  <div>salt</div>
 </template>
