@@ -1,3 +1,7 @@
+<script lang="ts"></script>
+
 <template>
-  <div>salt</div>
+  <div class="container flex justify-center mx-auto">
+    <Hero />
+  </div>
 </template>

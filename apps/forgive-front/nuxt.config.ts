@@ -1,9 +1,24 @@
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { defineNuxtConfig } from 'nuxt/config';
+import path from 'path';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    [
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          Lora: true,
+          'Josefin+Sans': ['200..900'],
+        },
+      },
+    ],
+  ],
+  dir: {
+    public: path.resolve(__dirname, './public'),
+  },
   workspaceDir: '../../',
   srcDir: 'src',
   devtools: { enabled: true },
