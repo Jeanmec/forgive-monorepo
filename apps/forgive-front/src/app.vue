@@ -5,7 +5,7 @@
     <header>
       <nav>
         <NuxtLink to="/"> Home </NuxtLink>
-        <NuxtLink to="/about"> About </NuxtLink>
+        <NuxtLink to="/about" class="bg-red-500"> About </NuxtLink>
       </nav>
     </header>
     <nuxt-page />
