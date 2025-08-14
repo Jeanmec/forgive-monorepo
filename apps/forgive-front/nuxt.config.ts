@@ -11,7 +11,6 @@ export default defineNuxtConfig({
       {
         families: {
           Lora: true,
-          'Josefin+Sans': ['200..900'],
         },
       },
     ],
@@ -39,4 +38,15 @@ export default defineNuxtConfig({
   vite: {
     plugins: [nxViteTsPaths()],
   },
+  components: [
+    '~/components',
+    {
+      path: '~/components/Icons',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/Sin',
+      pathPrefix: false,
+    },
+  ],
 });
