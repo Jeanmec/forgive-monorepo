@@ -6,11 +6,17 @@
   "private": true,
   "dependencies": {
     "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
+    "@nestjs/typeorm": "^11.0.0",
     "axios": "^1.6.0",
+    "pg": "^8.16.3",
+    "pg-connection-string": "^2.9.1",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "typeorm": "^0.3.25",
+    "zod": "^4.0.17"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^2.1.1",
@@ -28,9 +34,9 @@
     "@nx/eslint-plugin": "21.3.11",
     "@nx/jest": "21.3.11",
     "@nx/js": "21.3.11",
-    "@nx/nest": "^21.3.11",
+    "@nx/nest": "21.3.11",
     "@nx/node": "21.3.11",
-    "@nx/nuxt": "^21.3.11",
+    "@nx/nuxt": "21.3.11",
     "@nx/vite": "21.3.11",
     "@nx/web": "21.3.11",
     "@nx/webpack": "21.3.11",
@@ -69,6 +75,7 @@
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
     "vue-tsc": "^2.2.8",
-    "webpack-cli": "^5.1.4"
+    "webpack": "^5.101.2",
+    "webpack-cli": "^6.0.1"
   }
 }

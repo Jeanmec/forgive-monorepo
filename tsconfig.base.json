@@ -15,9 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@forgive-monorepo/shared": ["shared/src/index.ts"],
-      "@forgive-monorepo/types": ["shared/types/src/index.ts"],
-      "@forgive-monorepo/utils": ["shared/utils/src/index.ts"]
+      "@forgive-monorepo/shared/types": ["shared/types/src/index.ts"],
+      "@forgive-monorepo/shared/utils": ["shared/utils/src/index.ts"],
+      "@forgive-monorepo/shared/validation": ["shared/validation/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
