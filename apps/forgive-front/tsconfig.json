@@ -1,13 +1,18 @@
 {
   "extends": "../../tsconfig.base.json",
   "files": [],
-  "include": [],
+  "include": [".nuxt/nuxt.d.ts"],
+  "noEmit": true,
+  "sourceMap": false,
   "references": [
     {
       "path": "./tsconfig.app.json"
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "../../shared/types/tsconfig.lib.json"
     }
   ]
 }

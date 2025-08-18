@@ -4,6 +4,7 @@ import path from 'path';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
   modules: [
     '@nuxtjs/tailwindcss',
     [
@@ -28,7 +29,7 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
     tsConfig: {
-      extends: '../../../tsconfig.base.json', // Nuxt copies this string as-is to the `./.nuxt/tsconfig.json`, therefore it needs to be relative to that directory
+      extends: '../../../tsconfig.base.json',
     },
   },
   imports: {
@@ -37,7 +38,17 @@ export default defineNuxtConfig({
   css: ['~/assets/css/styles.scss'],
   vite: {
     plugins: [nxViteTsPaths()],
+    build: {
+      sourcemap: false,
+    },
   },
+
+  runtimeConfig: {
+    public: {
+      publicBackendUrl: process.env.NUXT_PUBLIC_BACKEND_URL,
+    },
+  },
+
   components: [
     '~/components',
     {

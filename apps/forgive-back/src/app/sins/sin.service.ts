@@ -10,8 +10,18 @@ export class SinService {
     @InjectRepository(SinEntity)
     private readonly sinRepository: Repository<SinEntity>
   ) {}
+
   async create(createDto: Sin): Promise<Sin> {
     const sin = this.sinRepository.create(createDto);
     return await this.sinRepository.save(sin);
+  }
+
+  async find(page?: { page: number }): Promise<Sin[]> {
+    const pageNumber = page?.page ? Number(page.page) : 1;
+
+    return await this.sinRepository.find({
+      skip: (pageNumber - 1) * 3,
+      take: 3,
+    });
   }
 }

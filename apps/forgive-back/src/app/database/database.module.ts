@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { parse } from 'pg-connection-string';
-import { join } from 'path';
 import { SinEntity } from '../entities/sin.entity';
 
 @Module({
