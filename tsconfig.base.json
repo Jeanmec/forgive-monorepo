@@ -1,8 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "noEmitOnError": true,
     "rootDir": ".",
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -16,9 +17,9 @@
     "baseUrl": ".",
     "paths": {
       "@forgive-monorepo/shared/types": ["shared/types/src/index.ts"],
-      "@forgive-monorepo/shared/utils": ["shared/utils/src/index.ts"],
       "@forgive-monorepo/shared/validation": ["shared/validation/src/index.ts"]
-    }
+    },
+    "outDir": "./dist"
   },
   "exclude": ["node_modules", "tmp"]
 }
