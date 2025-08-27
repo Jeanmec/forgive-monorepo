@@ -2,13 +2,7 @@
   <div class="flex flex-col">
     <ResumeHero />
     <div class="grid grid-cols-3 gap-4 mt-6">
-      <Sin
-        v-for="sin in sins"
-        :key="sin.id"
-        :message="sin.message"
-        :heaven="sin.heaven"
-        :hell="sin.hell"
-      />
+      <Sin v-for="sin in sins" :key="sin.id" :sin="sin" />
     </div>
   </div>
 </template>

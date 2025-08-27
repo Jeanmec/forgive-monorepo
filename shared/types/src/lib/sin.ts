@@ -4,3 +4,5 @@ export interface Sin {
   hell?: number;
   heaven?: number;
 }
+
+export type RateType = 'heaven' | 'hell';

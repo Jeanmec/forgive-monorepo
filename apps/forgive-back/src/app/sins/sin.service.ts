@@ -1,4 +1,4 @@
-import { Sin } from '@forgive-monorepo/shared/types';
+import { RateType, Sin } from '@forgive-monorepo/shared/types';
 import { Injectable } from '@nestjs/common';
 import { SinEntity } from '../entities/sin.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -23,5 +23,18 @@ export class SinService {
       skip: (pageNumber - 1) * 3,
       take: 3,
     });
+  }
+
+  async rate(id: number, type: RateType): Promise<Sin> {
+    const sin = await this.sinRepository.findOneBy({ id });
+    if (!sin) throw new Error('Sin not found');
+
+    if (type === 'heaven') {
+      sin.heaven += 1;
+    } else {
+      sin.hell += 1;
+    }
+
+    return await this.sinRepository.save(sin);
   }
 }
