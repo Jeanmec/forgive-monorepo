@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useSinStore } from '../../stores/sins';
+import { useSinStore } from '../../stores/sins.store';
 
 const sinStore = useSinStore();
 

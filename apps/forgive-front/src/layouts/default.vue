@@ -2,7 +2,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useSinStore } from '../stores/sins';
+import { useSinStore } from '../stores/sins.store';
 import { Sin } from '@forgive-monorepo/shared/types';
 
 const sinStore = useSinStore();

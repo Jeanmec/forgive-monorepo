@@ -11,14 +11,11 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useSinService } from '../services/sin';
-import { useSinStore } from '../stores/sins';
+import { useSinService } from '../services/sin.service';
 
-const sinStore = useSinStore();
 const { getAll } = useSinService();
 
 onMounted(async () => {
-  const sins = await getAll();
-  sinStore.setSins(sins);
+  await getAll();
 });
 </script>

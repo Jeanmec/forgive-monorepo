@@ -16,6 +16,7 @@ export default defineNuxtConfig({
       },
     ],
     '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
   ],
   dir: {
     public: path.resolve(__dirname, './public'),
@@ -61,4 +62,6 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+
+  plugins: ['~/plugins/pinia-persistedstate.ts'],
 });
