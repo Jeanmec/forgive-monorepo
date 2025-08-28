@@ -22,7 +22,7 @@ export const useSinService = () => {
 
     rateSin(sinId: number, type: RateType): void {
       emit('/sin/rate', { id: sinId, type });
-      ratedSinsStore.addRatedSin(sinId);
+      ratedSinsStore.addRatedSin(sinId, type);
     },
   };
 };

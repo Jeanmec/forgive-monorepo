@@ -1,19 +1,31 @@
+import { RateType } from '@forgive-monorepo/shared/types';
 import { defineStore } from 'pinia';
 
+interface RatedState {
+  ratedItems: Record<number, RateType>;
+}
+
 export const useRatedSinsStore = defineStore('ratedSins', {
-  state: () => ({
-    sinsIdRated: [] as number[],
+  state: (): RatedState => ({
+    ratedItems: {},
   }),
+
   actions: {
-    addRatedSin(sinId: number) {
-      this.sinsIdRated.push(sinId);
-    },
-    getRatedSins() {
-      return this.sinsIdRated;
-    },
-    isRatedSin(sinId: number) {
-      return this.sinsIdRated.includes(sinId);
+    addRatedSin(sinId: number, rateType: RateType) {
+      this.ratedItems[sinId] = rateType;
     },
   },
-  persist: true,
+
+  getters: {
+    isRated:
+      (state) =>
+      (sinId: number): boolean => {
+        return sinId in state.ratedItems;
+      },
+    getRateType:
+      (state) =>
+      (sinId: number): RateType | null => {
+        return state.ratedItems[sinId] || null;
+      },
+  },
 });

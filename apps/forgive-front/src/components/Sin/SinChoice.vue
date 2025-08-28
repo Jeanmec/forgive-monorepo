@@ -1,20 +1,23 @@
 <template>
   <div class="flex gap-3 text-2xl">
     <button
-      class="flex items-center gap-1 disabled:opacity-50"
+      class="flex items-center gap-1"
       @click="rateSin(id, 'heaven')"
-      :disabled="ratedSinsStore.isRatedSin(id)"
+      :disabled="ratedSinsStore.isRated(id)"
+      :class="{ 'text-blue-500': ratedSinsStore.getRateType(id) === 'heaven' }"
     >
       <span class="text-md">{{ heaven }}</span>
-      <BurningSkull />
+      <Cross />
     </button>
+
     <button
-      class="flex items-center gap-1 disabled:opacity-50"
+      class="flex items-center gap-1"
       @click="rateSin(id, 'hell')"
-      :disabled="ratedSinsStore.isRatedSin(id)"
+      :disabled="ratedSinsStore.isRated(id)"
+      :class="{ 'text-red-500': ratedSinsStore.getRateType(id) === 'hell' }"
     >
       <span class="text-md">{{ hell }}</span>
-      <Cross />
+      <BurningSkull />
     </button>
   </div>
 </template>
