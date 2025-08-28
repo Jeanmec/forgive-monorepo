@@ -11,23 +11,39 @@ export class SinService {
     private readonly sinRepository: Repository<SinEntity>
   ) {}
 
+  async findById(id: number): Promise<Sin> {
+    const sin = await this.sinRepository.findOne({
+      where: { id },
+      select: {
+        id: true,
+        message: true,
+        heaven: true,
+        hell: true,
+      },
+    });
+    if (!sin) throw new Error('Sin not found');
+    return sin;
+  }
+
   async create(createDto: Sin): Promise<Sin> {
     const sin = this.sinRepository.create(createDto);
     return await this.sinRepository.save(sin);
   }
 
-  async find(page?: { page: number }): Promise<Sin[]> {
-    const pageNumber = page?.page ? Number(page.page) : 1;
+  async findByPage(page?: { page: number }): Promise<Sin[]> {
+    const pageNumber = page?.page ? Number(page.page) : 0;
 
     return await this.sinRepository.find({
-      skip: (pageNumber - 1) * 3,
+      skip: pageNumber * 3,
       take: 3,
+      order: {
+        createdAt: 'ASC',
+      },
     });
   }
 
   async rate(id: number, type: RateType): Promise<Sin> {
-    const sin = await this.sinRepository.findOneBy({ id });
-    if (!sin) throw new Error('Sin not found');
+    const sin = await this.findById(id);
 
     if (type === 'heaven') {
       sin.heaven += 1;

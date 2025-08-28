@@ -8,17 +8,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useSinService } from '../../services/sin';
+import { storeToRefs } from 'pinia';
+import { useSinStore } from '../../stores/sins';
 
-const { getAll } = useSinService();
-const sins = ref([]);
+const sinStore = useSinStore();
 
-onMounted(async () => {
-  try {
-    sins.value = await getAll();
-  } catch (err) {
-    console.error('Error fetching sins:', err);
-  }
-});
+const { sins } = storeToRefs(sinStore);
 </script>

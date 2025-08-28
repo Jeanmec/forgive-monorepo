@@ -29,8 +29,11 @@ export class SinController {
 
   @Get()
   @UsePipes(new ZodValidationPipe(getSinSchema))
-  findAll(@Query() page: { page: number }): Promise<Sin[]> {
-    return this.sinService.find(page);
+  async findAll(@Query() page: { page: number }): Promise<Sin[]> {
+    const sins = await this.sinService.findByPage(page);
+
+    console.log('Sins retrieved:', sins);
+    return sins;
   }
 
   @Post('/:id/rate')

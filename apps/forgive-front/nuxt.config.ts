@@ -15,6 +15,7 @@ export default defineNuxtConfig({
         },
       },
     ],
+    '@pinia/nuxt',
   ],
   dir: {
     public: path.resolve(__dirname, './public'),

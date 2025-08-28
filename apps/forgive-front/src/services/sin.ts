@@ -2,6 +2,7 @@ import type { Sin, RateType } from '@forgive-monorepo/shared/types';
 
 export const useSinService = () => {
   const api = useApi();
+  const { emit } = useSocket();
 
   return {
     async getAll(): Promise<Sin[]> {
@@ -14,11 +15,8 @@ export const useSinService = () => {
       return data;
     },
 
-    async rateSin(sinId: string, type: RateType): Promise<Sin> {
-      const { data } = await api.post<Sin>(`/api/sin/${sinId}/rate`, {
-        type,
-      });
-      return data;
+    rateSin(sinId: string, type: RateType): void {
+      emit('/sin/rate', { id: sinId, type });
     },
   };
 };

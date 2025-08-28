@@ -1,4 +1,3 @@
-// composables/useApi.ts
 import axios, { type AxiosInstance } from 'axios';
 import { useRuntimeConfig } from 'nuxt/app';
 
@@ -13,7 +12,7 @@ export const useApi = (): AxiosInstance => {
   const backendUrl = config.public?.publicBackendUrl;
 
   if (!backendUrl) {
-    throw new Error('PUBLIC_BACKEND_URL is not defined in runtimeConfig.');
+    throw new Error('BACKEND_URL is not defined.');
   }
 
   apiInstance = axios.create({

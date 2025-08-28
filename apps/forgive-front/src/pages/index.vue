@@ -8,3 +8,17 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import { useSinService } from '../services/sin';
+import { useSinStore } from '../stores/sins';
+
+const sinStore = useSinStore();
+const { getAll } = useSinService();
+
+onMounted(async () => {
+  const sins = await getAll();
+  sinStore.setSins(sins);
+});
+</script>
