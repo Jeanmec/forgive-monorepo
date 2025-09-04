@@ -64,4 +64,10 @@ export default defineNuxtConfig({
   ],
 
   plugins: ['~/plugins/pinia-persistedstate.ts'],
+
+  nitro: {
+    output: {
+      dir: '../../dist/apps/forgive-front/.output',
+    },
+  },
 });
