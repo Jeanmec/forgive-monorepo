@@ -1,8 +1,8 @@
-import { RateType, Sin } from '@forgive-monorepo/shared/types';
 import { Injectable } from '@nestjs/common';
-import { SinEntity } from '../entities/sin.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { SinEntity } from '../entities/sin.entity';
+import { Sin, RateType } from '@forgive-monorepo/shared/types';
 
 @Injectable()
 export class SinService {
@@ -25,20 +25,24 @@ export class SinService {
     return sin;
   }
 
-  async create(createDto: Sin): Promise<Sin> {
-    const sin = this.sinRepository.create(createDto);
+  async create(message: string): Promise<Sin> {
+    const sinData: Sin = {
+      message,
+      heaven: 0,
+      hell: 0,
+    };
+
+    const sin = this.sinRepository.create(sinData);
     return await this.sinRepository.save(sin);
   }
 
-  async findByPage(page?: { page: number }): Promise<Sin[]> {
-    const pageNumber = page?.page ? Number(page.page) : 0;
+  async find(skip: number, take: number): Promise<Sin[]> {
+    const takeLimit = take ? Number(take) : 10;
 
     return await this.sinRepository.find({
-      skip: pageNumber * 3,
-      take: 3,
-      order: {
-        createdAt: 'ASC',
-      },
+      skip,
+      take: takeLimit,
+      order: { createdAt: 'DESC' },
     });
   }
 

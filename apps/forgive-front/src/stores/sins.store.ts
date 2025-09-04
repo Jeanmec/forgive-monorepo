@@ -1,16 +1,21 @@
 import { defineStore } from 'pinia';
-import { Sin } from 'shared/types/src/lib/sin';
+import { Sin } from '@forgive-monorepo/shared/types';
+
+interface SinState {
+  sins: Sin[];
+}
 
 export const useSinStore = defineStore('sin', {
-  state: () => ({
-    sins: [] as Sin[],
+  state: (): SinState => ({
+    sins: [],
   }),
+
   actions: {
-    getSins() {
-      return this.sins;
-    },
     addSin(sin: Sin) {
-      this.sins.push(sin);
+      this.sins.unshift(sin);
+    },
+    addSins(sins: Sin[]) {
+      this.sins.push(...sins);
     },
     setSins(sins: Sin[]) {
       this.sins = sins;
@@ -18,11 +23,15 @@ export const useSinStore = defineStore('sin', {
     updateSin(updatedSin: Sin) {
       const index = this.sins.findIndex((sin) => sin.id === updatedSin.id);
       if (index !== -1) {
-        this.sins[index] = updatedSin;
+        this.sins.splice(index, 1, updatedSin);
       }
     },
     deleteSins() {
       this.sins = [];
     },
+  },
+
+  getters: {
+    getSins: (state): Sin[] => state.sins,
   },
 });

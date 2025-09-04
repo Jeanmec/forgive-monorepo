@@ -7,7 +7,7 @@ import {
 } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 import type { GatewayMetadata } from '@nestjs/websockets/interfaces/gateway-metadata.interface';
-import { RateType } from '@forgive-monorepo/shared/types';
+import { RateType, Sin } from '@forgive-monorepo/shared/types';
 import { SinService } from './sin.service';
 
 const allowedOrigins = process.env.ALLOW_ORIGINS?.split(',');
@@ -43,8 +43,11 @@ export class SinGateway {
 
   @SubscribeMessage('/sin/rate')
   async handleRate(@MessageBody() data: { id: number; type: RateType }) {
-    const sinUpdated = await this.sinService.rate(data.id, data.type);
+    const updated = await this.sinService.rate(data.id, data.type);
+    this.server.emit('/sin/update', updated);
+  }
 
-    this.server.emit('/sin/update', sinUpdated);
+  emitNewSin(sin: Sin) {
+    this.server.emit('/sin/new', sin);
   }
 }

@@ -9,14 +9,24 @@ export const useSinService = () => {
   const ratedSinsStore = useRatedSinsStore();
 
   return {
-    async getAll(): Promise<Sin[]> {
-      const { data } = await api.get<Sin[]>('/api/sin');
-      sinStore.setSins(data);
+    async getSins({
+      take,
+      skip,
+    }: {
+      take?: number;
+      skip?: number;
+    }): Promise<Sin[]> {
+      const params = [];
+      if (take !== undefined) params.push(`take=${take}`);
+      if (skip !== undefined) params.push(`skip=${skip}`);
+      const query = params.length ? `?${params.join('&')}` : '';
+      const { data } = await api.get<Sin[]>(`/api/sin${query}`);
+      sinStore.addSins(data);
       return data;
     },
 
-    async create(sin: Sin): Promise<Sin> {
-      const { data } = await api.post<Sin>('/sin', sin);
+    async create(message: string): Promise<Sin> {
+      const { data } = await api.post<Sin>('/api/sin/create', { message });
       return data;
     },
 

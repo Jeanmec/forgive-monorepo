@@ -74,5 +74,6 @@
         "ciTargetName": "e2e-ci"
       }
     }
-  ]
+  ],
+  "neverConnectToCloud": true
 }

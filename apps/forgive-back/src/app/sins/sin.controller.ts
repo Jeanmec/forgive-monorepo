@@ -1,47 +1,33 @@
-import {
-  Controller,
-  Body,
-  Post,
-  UsePipes,
-  Get,
-  Query,
-  Param,
-} from '@nestjs/common';
+import { Controller, Body, Post, UsePipes, Get, Query } from '@nestjs/common';
 import { SinService } from './sin.service';
-import { RateType, Sin } from '@forgive-monorepo/shared/types';
+import { SinGateway } from './sin.gateway';
+import { Sin } from '@forgive-monorepo/shared/types';
 import { ZodValidationPipe } from '../pipes/zod-validation.pipe';
 import {
   createSinSchema,
   getSinSchema,
-  rateSinBodySchema,
-  rateSinParamSchema,
 } from '@forgive-monorepo/shared/validation';
+import z from 'zod';
 
 @Controller('sin')
 export class SinController {
-  constructor(private readonly sinService: SinService) {}
+  constructor(
+    private readonly sinService: SinService,
+    private readonly sinGateway: SinGateway
+  ) {}
 
   @Post('/create')
   @UsePipes(new ZodValidationPipe(createSinSchema))
-  create(@Body() sin: Sin): Promise<Sin> {
-    return this.sinService.create(sin);
+  async create(@Body() body: { message: string }): Promise<Sin> {
+    const savedSin = await this.sinService.create(body.message);
+    this.sinGateway.emitNewSin(savedSin);
+    return savedSin;
   }
 
   @Get()
   @UsePipes(new ZodValidationPipe(getSinSchema))
-  async findAll(@Query() page: { page: number }): Promise<Sin[]> {
-    const sins = await this.sinService.findByPage(page);
-
-    console.log('Sins retrieved:', sins);
-    return sins;
-  }
-
-  @Post('/:id/rate')
-  rate(
-    @Param(new ZodValidationPipe(rateSinParamSchema)) params: { id: number },
-    @Body(new ZodValidationPipe(rateSinBodySchema))
-    body: { type: RateType }
-  ): Promise<Sin> {
-    return this.sinService.rate(params.id, body.type);
+  async find(@Query() query: z.infer<typeof getSinSchema>): Promise<Sin[]> {
+    const { take, skip } = query;
+    return this.sinService.find(skip, take);
   }
 }

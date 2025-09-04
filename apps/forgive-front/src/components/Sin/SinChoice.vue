@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-3 text-2xl">
+  <div class="flex gap-3 text-2xl mt-auto ml-auto">
     <button
       class="flex items-center gap-1"
       @click="rateSin(id, 'heaven')"

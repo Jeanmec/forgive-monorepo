@@ -8,14 +8,12 @@ export const createSinSchema = z.object({
 
 // /sin
 export const getSinSchema = z.object({
-  page: z
-    .string()
-    .transform((val) => {
-      const parsed = Number(val);
-      return isNaN(parsed) ? 1 : parsed;
-    })
-    .optional()
-    .default(1),
+  take: z
+    .preprocess((val) => Number(val), z.number().min(0).default(10))
+    .optional(),
+  skip: z
+    .preprocess((val) => Number(val), z.number().min(0).default(0))
+    .optional(),
 });
 
 // /sin/:id/rate

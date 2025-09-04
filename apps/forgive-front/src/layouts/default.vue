@@ -10,8 +10,10 @@ const { on } = useSocket();
 
 onMounted(async () => {
   on('/sin/update', (data: Sin) => {
-    console.log('sin updated:', data);
     sinStore.updateSin(data);
+  });
+  on('/sin/new', (data: Sin) => {
+    sinStore.addSin(data);
   });
 });
 </script>

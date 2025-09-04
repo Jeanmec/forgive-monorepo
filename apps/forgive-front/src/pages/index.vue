@@ -4,7 +4,7 @@
     <Form />
     <div class="px-12">
       <Divider />
-      <Resume />
+      <Resume :numberItemsToShow="numberItemsPreview" />
     </div>
   </div>
 </template>
@@ -13,9 +13,14 @@
 import { onMounted } from 'vue';
 import { useSinService } from '../services/sin.service';
 
-const { getAll } = useSinService();
+const { getSins } = useSinService();
+
+const numberItemsPreview = 3;
 
 onMounted(async () => {
-  await getAll();
+  await getSins({
+    take: numberItemsPreview,
+    skip: 0,
+  });
 });
 </script>
