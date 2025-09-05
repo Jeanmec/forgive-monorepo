@@ -6,6 +6,14 @@ import path from 'path';
 export default defineNuxtConfig({
   app: {
     head: {
+      title: 'Forgive me - Confess your sins anonymously',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'Confess your sins anonymously and face judgment. Atone, seek redemption, and discover if you deserve forgiveness.',
+        },
+      ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/praying.svg' }],
     },
   },
@@ -22,6 +30,7 @@ export default defineNuxtConfig({
     ],
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
+    '@nuxtjs/seo',
   ],
   dir: {
     public: path.resolve(__dirname, './public'),

@@ -5,12 +5,8 @@
 </p>
 
 <h1 align="center">
-  <a href="https://forgv.com/" style="display: flex; color: #2E2E2E; justify-content: center;">
-    <span>Forg</span>
-    <span style="color: #BDBDBD;">i</span>
-    <span>v</span>
-    <span style="color: #BDBDBD;">e</span>
-    <span>.com</span>
+  <a href="https://forgv.com/">
+    <span style="color:#4A4A4A;">Forg</span><span style="color:#BDBDBD;">i</span><span style="color:#4A4A4A;">v</span><span style="color:#BDBDBD;">e</span><span style="color:#4A4A4A;">.com</span>
   </a>
 </h1>
 

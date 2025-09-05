@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <ResumeHero />
-    <div class="grid grid-cols-3 gap-4 mt-6">
+    <div class="grid grid-cols-1 gap-4 mt-6 md:grid-cols-3">
       <Sin v-for="sin in sinsToShow" :key="sin.id" :sin="sin" />
     </div>
   </div>
