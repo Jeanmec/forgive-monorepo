@@ -1,28 +1,63 @@
-# ForgiveMonorepo
+<p align="center">
+  <a href="https://forgv.com" target="_blank">
+    <img src="https://forgv.com/praying.svg" width="120" alt="Nest Logo" />
+  </a>
+</p>
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+<h1 align="center">
+  <a href="https://forgv.com/" style="display: flex; color: #2E2E2E; justify-content: center;">
+    <span>Forg</span>
+    <span style="color: #BDBDBD;">i</span>
+    <span>v</span>
+    <span style="color: #BDBDBD;">e</span>
+    <span>.com</span>
+  </a>
+</h1>
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+---
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## What is that ?
 
-## Finish your remote caching setup
+This app, inspired by a mini-game featured in
+<a href="https://store.steampowered.com/app/485380/Welcome_to_the_Game/" target="_blank">
+Welcome to the Game
+</a>, allows you to confess your sins and be judged, as well as decide whether the sins of others deserve forgiveness or not.
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/q1xjB9jgVz)
+All sins and votes are anonymous.
 
+---
+
+### Getting Started
+
+To run the application, you need to configure the necessary environment variables for both the backend and frontend.
+
+- **Configuration**: Copy the `.env.example` files to `.env` in both the `backend` and `frontend` folders and fill in the appropriate values, particularly the database and API URLs.
+- **Installation**: Run `yarn install` in each folder to install dependencies.
 
 ## Run tasks
 
-To run tasks with Nx use:
+To run the frontend use:
 
 ```sh
-npx nx <target> <project-name>
+npx nx serve forgive-front
 ```
 
-For example:
+To run the backend use:
 
 ```sh
-npx nx build myproject
+npx nx serve forgive-back
+```
+
+To create a production bundle:
+
+```sh
+npx nx build forgive-front
+```
+
+To see all available targets to run for a project, run:
+
+```sh
+npx nx show project forgive-front
 ```
 
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
@@ -34,6 +69,7 @@ These targets are either [inferred automatically](https://nx.dev/concepts/inferr
 While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
 
 To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
+
 ```sh
 npx nx add @nx/react
 ```
@@ -52,7 +88,6 @@ You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx 
 
 [Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
-
 [Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
 ## Install Nx Console
@@ -65,13 +100,7 @@ Nx Console is an editor extension that enriches your developer experience. It le
 
 Learn more:
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+- [Learn more about this workspace setup](https://nx.dev/nx-api/nuxt?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 - [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 - [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 - [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
