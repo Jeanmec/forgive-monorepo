@@ -4,6 +4,11 @@ import path from 'path';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/praying.svg' }],
+    },
+  },
   ssr: true,
   modules: [
     '@nuxtjs/tailwindcss',
