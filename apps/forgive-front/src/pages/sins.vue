@@ -13,7 +13,7 @@
           @click="loadMoreSins"
         >
           <span class="flex gap-2 flex-col items-center underline">
-            Charger plus...
+            Load more...
           </span>
         </div>
       </div>

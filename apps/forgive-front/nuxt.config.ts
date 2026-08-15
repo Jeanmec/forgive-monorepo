@@ -62,6 +62,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       publicBackendUrl: process.env.NUXT_PUBLIC_BACKEND_URL,
+      contactEmail: process.env.NUXT_PUBLIC_CONTACT_EMAIL,
     },
   },
 

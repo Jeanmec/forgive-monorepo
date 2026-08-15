@@ -1,6 +1,6 @@
 // apps/forgive-front/tsconfig.spec.json
 {
-  "extends": "./tsconfig.json", // Assurez-vous d'étendre la configuration de base
+  "extends": "./tsconfig.json", // Make sure to extend the base configuration
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "allowSyntheticDefaultImports": true,
@@ -32,7 +32,7 @@
     "src/**/*.d.ts"
   ],
   "references": [
-    // Ajoutez cette ligne pour référencer le package de types partagés
+    // Add this line to reference the shared types package
     { "path": "../../shared/types" }
   ]
 }

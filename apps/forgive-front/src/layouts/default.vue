@@ -1,4 +1,11 @@
-<template><NuxtPage /></template>
+<template>
+  <div class="flex min-h-screen flex-col">
+    <div class="grow">
+      <NuxtPage />
+    </div>
+    <Footer />
+  </div>
+</template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
