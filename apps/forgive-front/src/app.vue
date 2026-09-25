@@ -6,8 +6,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App',
-};
+<script setup lang="ts">
+useHead({
+  title: 'Forgive me - Confess your sins anonymously',
+});
 </script>

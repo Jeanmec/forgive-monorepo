@@ -6,7 +6,8 @@ import path from 'path';
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Forgive me - Confess your sins anonymously',
+      // @nuxtjs/seo defaults to '%s %separator %siteName'
+      titleTemplate: '%s',
       meta: [
         {
           name: 'description',
@@ -16,6 +17,9 @@ export default defineNuxtConfig({
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/praying.svg' }],
     },
+  },
+  site: {
+    name: 'Forgive me',
   },
   ssr: true,
   modules: [
